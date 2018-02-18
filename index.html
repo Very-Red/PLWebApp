@@ -48,7 +48,7 @@
 
     <!-- you may add styles here (document-level) or as an external file (external level) -->
     <style>
-      body { padding-top: 100px; }    // this is to leave space between navbar and heading
+      body { padding-top: 75px; }    // this is to leave space between navbar and heading
                                      // when navbar-fixed-top is used
     </style>
 
@@ -106,10 +106,10 @@
 		      commonly, lists with links are used for navigation
 		  -->
 
-      <!-- WHAT ARE THE HREF #?? -->
+      <!-- WHAT ARE THE HREF #?? oh they're links-->
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-              <li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+              <!--<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -117,7 +117,9 @@
                   <li><a href="#">Development</a></li>
                   <li><a href="#">Consulting</a></li>
                 </ul>
-              </li>
+              </li>-->
+
+
               <li><a href="#">FAQ</a></li>
             </ul>
 
@@ -137,6 +139,38 @@
         </div>
       </nav>
     </header>
+
+    <div class = "container-fluid">
+    <div class="row content">
+      <div class="col-sm-2 sidenav">
+
+      <h4>Filters</h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Hot</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">New</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Top</a>
+          </li>
+        </ul><br>
+
+        <h4>Categories</h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="checkbox">
+            <label><input type="checkbox" value="">Professional</label>
+          </li>
+          <li class="checkbox">
+            <label><input type="checkbox" value="">Casual</label>
+          </li>
+          <li class="checkbox">
+            <label><input type="checkbox" value="">Romantic</label>
+          </li>
+        </ul><br>
+      </div>
+
 
     <!-- 9. let's add jumbotron header
         Bootstrap jumbotron header is one big, attention-grabbing header
@@ -164,8 +198,8 @@
 <!--
     <div class="container">
       <div class="row">
-        <div class="col-md-6">col1</div>
-        <div class="col-md-6">col2</div>
+        <div class="col-md-5">col1</div>
+        <div class="col-md-5">col2</div>
       </div>
     </div> -->
 
@@ -173,33 +207,182 @@
         (note: to have columns with different widths, change the x in col-md-x to
         any numbers as long as the total is 12)
     -->
+
+
+
     <section class="highlight">   <!-- 14. add section surrounding the grid, center it -->
+    <div class ="col-md-10">
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+
+        <div class="col-md-2">
           <img src="images/image.png" alt="image1">
-          <h3>Cloud Service</h3>
-          <p>Brief description about the cloud service your company provides.
-             Include some highlights that draw customers' attention.
+          <h3>picture title</h3>
+          <p>description of picture
           </p>
         </div>
-        <div class="col-md-4">
-          <img src="images/image.png" alt="image2">
-          <h3>Reverse Engineering</h3>
-          <p>Brief description about the reverse engineering your company provides.
-             Include some highlights that draw customers' attention.
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
           </p>
         </div>
-        <div class="col-md-4">
-          <img src="images/image.png" alt="image3">
-          <h3>Crowd Testing</h3>
-          <p>Brief description about the crowd testing your company provides.
-             Include some highlights that draw customers' attention.
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
           </p>
         </div>
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
+          </p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
+          </p>
+        </div>
+
+
       </div>
     </div>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
+          </p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
+          </p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
+          </p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
+          </p>
+        </div>
+
+        <div class="col-md-2">
+          <img src="images/image.png" alt="image1">
+          <h3>picture title</h3>
+          <p>description of picture
+          </p>
+        </div>
+
+      </div>
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+
+      <div class="container">
+        <div class="row">
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <img src="images/image.png" alt="image1">
+            <h3>picture title</h3>
+            <p>description of picture
+            </p>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    </div>
+    </div>
+
     </section>
+
 
     <!-- 8. To use bootstrap.min.js, need jquery
          https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
