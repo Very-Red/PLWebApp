@@ -1,0 +1,287 @@
+
+<!-- 1. create HTML5 doctype -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">  <!-- required to handle IE -->
+
+    <!-- 2. include meta tag to ensure proper rendering and touch zooming
+         (bootstrap is designed to be responsive to mobile.
+         Mobile-first styles are part of the core framework.)
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- the width=device-width part sets the width of the page to follow
+         the screen-width of the device (which will vary depending on the device)
+         the initial-scale=1 part sets the initialize zoom level when the page
+         is first loaded by the browser.
+    -->
+
+    <!-- The above 2 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- to use bootstrap:
+         option1: download the files (from http://getbootstrap.com) and put them in
+                  your working directory
+         option2: make a link to the files from a CDN (Content Delivery Network)
+    -->
+
+    <!-- 3. link bootstrap pages (let's use CDN here)
+         Two basic bootstrap pages are
+             https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css (style, link here)
+             https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js (js, link at the bottom)
+    -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="css/bootstrap.min.css" /> if you downloaded bootstrap to your computer -->
+
+
+    <!-- 13. link to customized styles (mystyle.css) -->
+    <link rel="stylesheet" href="styles/mystyle.css" />
+
+    <!-- required scripts for IE -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    <!-- you may add styles here (document-level) or as an external file (external level) -->
+    <style>
+      body { padding-top: 75px; }    // this is to leave space between navbar and heading
+                                     // when navbar-fixed-top is used
+    </style>
+
+    <title>Bootstrap example</title>
+
+  </head>
+  <body>
+    <header>
+
+      <!-- 4. add navbar (code from getbootstrap.com >> components >> navbar) -->
+
+      <!-- try
+           navbar-static-top
+             - creates a full-width navbar that scrolls away with the page
+             - removes the left, right, and top border created by navbar-default
+           navbar-fixed-top
+             - creates a full-width navbar that sticks to the page
+
+           navbar-inverse sets background to dark color scheme
+      -->
+
+      <!-- <nav class="navbar navbar-inverse navbar-static-top"> -->
+      <!-- <nav class="navbar navbar-inverse navbar-default">   -->
+      <nav class="navbar navbar-default navbar-fixed-top">
+
+        <!-- 5. bootstrap requires a containing element to wrap site contents.
+           There are two container classes to choose from (based on the above css bootstrap):
+           (1) .container class provides a responsive fixed width container
+           (2) .container-fluid class provides a full width container, spanning
+               the entire width of the view point
+           Both .container and .container-fluid set a max-width on the content
+           and cause the center alignment
+        -->
+        <div class="container">
+          <div class="navbar-header">
+
+            <!-- 6. the button is hidden on desktop and becomes a dropdown hamburger menu on mobile
+               The navigation bar is hidden on small screens and
+               replaced by a button in the top right corner (try to re-size this window).
+               Only when the button (hamburger menu) is clicked, the navigation bar will be displayed.
+               (each <span class="icon-bar"> is a line in the hamburger menu)
+            -->
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">Your logo / company name</a>
+          </div>
+
+		  <!-- 7. nav-collapse makes it possible to expand and collapse the menu
+		      require: javascript plugin (we use js bootstrap here, at the bottom)
+
+		      commonly, lists with links are used for navigation
+		  -->
+
+      <!-- WHAT ARE THE HREF #?? oh they're links-->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+              <!--<li><a href="#"><span class="glyphicon glyphicon-home"></span></a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">Design</a></li>
+                  <li><a href="#">Development</a></li>
+                  <li><a href="#">Consulting</a></li>
+                </ul>
+              </li>-->
+
+
+              <li><a href="#">FAQ</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            </ul>
+
+            <form class="navbar-form navbar-right"action="/action_page.php">
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+              </div>
+              <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            </form>
+
+          </div>
+        </div>
+      </nav>
+    </header>
+
+
+
+
+    <!-- 9. let's add jumbotron header
+        Bootstrap jumbotron header is one big, attention-grabbing header
+        (that people view it as "modern" but we may view it as "space-wasting")
+
+        To add a jumbotron header, as usual, bootstrap requires it to be in a container
+        (we'll comment out / remove the "Hello world!" and add the header)
+    -->
+
+    <!-- 11. Use a grid-like idea for the content layout
+        Grids are rows that contain columns.
+        Bootstrap works on a 12-column system.
+
+        The Bootstrap grid system has four classes:
+          xs (for phones - screens less than 768px wide)
+          sm (for tablets - screens equal to or greater than 768px wide)
+          md (for small laptops - screens equal to or greater than 992px wide)
+          lg (for laptops and desktops - screens equal to or greater than 1200px wide)
+
+        Let's assume we will use the md class
+        To have two columns (50% width each in full-screen width), use col-md-6.
+        These two columns will stack on mobile and become 100% width.
+        (col-md-x specifies that we are using a medium size column)
+    -->
+<!--
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">col1</div>
+        <div class="col-md-5">col2</div>
+      </div>
+    </div> -->
+
+    <!-- 12. Let's create 3 columns, same width
+        (note: to have columns with different widths, change the x in col-md-x to
+        any numbers as long as the total is 12)
+    -->
+
+
+
+    <section class="highlight">   <!-- 14. add section surrounding the grid, center it -->
+    <div class ="col-md-12">
+    <div class="container">
+      <div class="row">
+        <div class="w3-container w3-red">
+        <div class="col-md-3" style = "border-style: solid; ">
+          <img src = "https://vignette.wikia.nocookie.net/animal-jam-clans-1/images/b/b3/Kawaii_bunny.jpg/revision/latest?cb=20160424023659" alt="image1 height = "50" width = "50"
+          style = " display: block;
+          margin-left: auto;
+          margin-right: auto;
+          width: 50%;">
+          <h3 style = "text-align: center;">Username</h3>
+        </div>
+
+        <div class="col-md-3" style = "border-style: solid; ">
+
+          <h3>Posts</h3>
+          <p style = "text-align: center;"> Number of followers
+          </p>
+        </div>
+
+        <div class="col-md-3" style = "border-style: solid;">
+
+          <h3>Upvotes Recieved</h3>
+          <p style = "text-align: center;"> Number of Upvotes
+          </p>
+        </div>
+
+        <div class="col-md-3" style = "border-style: solid;">
+
+          <h3>Comment Upvotes</h3>
+          <p style = "text-align: center;"> Number of comment upvotes
+          </p>
+        </div>
+        </div>
+
+        <div class="container" style = "border-style: solid;">
+          <div class="row">
+
+            <div class="col-md-2">
+              <img src="images/image.png" alt="image1">
+              <h3>picture title</h3>
+              <p>description of picture
+              </p>
+            </div>
+
+            <div class="col-md-2">
+              <img src="images/image.png" alt="image1">
+              <h3>picture title</h3>
+              <p>description of picture
+              </p>
+            </div>
+
+            <div class="col-md-2">
+              <img src="images/image.png" alt="image1">
+              <h3>picture title</h3>
+              <p>description of picture
+              </p>
+            </div>
+
+            <div class="col-md-2">
+              <img src="images/image.png" alt="image1">
+              <h3>picture title</h3>
+              <p>description of picture
+              </p>
+            </div>
+
+            <div class="col-md-2">
+              <img src="images/image.png" alt="image1">
+              <h3>picture title</h3>
+              <p>description of picture
+              </p>
+            </div>
+
+          </div>
+
+
+
+      </div>
+    </div>
+
+
+
+        </div>
+      </div>
+
+    </div>
+    </div>
+    </div>
+
+    </section>
+
+
+    <!-- 8. To use bootstrap.min.js, need jquery
+         https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
+         note: js bootstrap allows menu interaction such as dropdown
+         (if only use css bootstrap, only link to the css)
+    -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
+
+  </body>
+</html>
