@@ -55,7 +55,7 @@
     // when navbar-fixed-top is used
   </style>
 
-  <title>Profile</title>
+  <title>Home</title>
 
 </head>
 
@@ -128,16 +128,10 @@
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
+            <li><button type="submit" class="btn btn-default">Make Post</button></li>
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
-
-          <form class="navbar-form navbar-right" action="/action_page.php">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-          </form>
 
         </div>
       </div>
@@ -145,101 +139,20 @@
   </header>
 
 
+  <footer>
+    <p>Footer Text</p>
+  </footer>
 
 
-  <!-- 9. let's add jumbotron header
-        Bootstrap jumbotron header is one big, attention-grabbing header
-        (that people view it as "modern" but we may view it as "space-wasting")
-
-        To add a jumbotron header, as usual, bootstrap requires it to be in a container
-        (we'll comment out / remove the "Hello world!" and add the header)
-    -->
-
-  <!-- 11. Use a grid-like idea for the content layout
-        Grids are rows that contain columns.
-        Bootstrap works on a 12-column system.
-
-        The Bootstrap grid system has four classes:
-          xs (for phones - screens less than 768px wide)
-          sm (for tablets - screens equal to or greater than 768px wide)
-          md (for small laptops - screens equal to or greater than 992px wide)
-          lg (for laptops and desktops - screens equal to or greater than 1200px wide)
-
-        Let's assume we will use the md class
-        To have two columns (50% width each in full-screen width), use col-md-6.
-        These two columns will stack on mobile and become 100% width.
-        (col-md-x specifies that we are using a medium size column)
-    -->
-  <!--
-    <div class="container">
-      <div class="row">
-        <div class="col-md-5">col1</div>
-        <div class="col-md-5">col2</div>
-      </div>
-    </div> -->
-
-  <!-- 12. Let's create 3 columns, same width
-        (note: to have columns with different widths, change the x in col-md-x to
-        any numbers as long as the total is 12)
-    -->
-
-
-
-  <section class="highlight">
-    <!-- 14. add section surrounding the grid, center it -->
-    <div class="col-md-12">
-      <div class="container">
-        <div class="row">
-          <div class="w3-container w3-red">
-            <div class="col-md-3" style="border-style: solid; ">
-              <img src="https://vignette.wikia.nocookie.net/animal-jam-clans-1/images/b/b3/Kawaii_bunny.jpg/revision/latest?cb=20160424023659" alt="image1 height = " 50 " width = "50 "
-          style = " display: block; margin-left: auto; margin-right: auto; width: 50%; ">
-          <h3 style = "text-align: center; ">Username</h3>
-        </div>
-
-        <div class="col-md-3 " style = "border-style: solid; ">
-
-          <h3>Posts</h3>
-          <p style = "text-align: center; "> Number of followers
-          </p>
-        </div>
-
-        <div class="col-md-3 " style = "border-style: solid; ">
-
-          <h3>Upvotes Recieved</h3>
-          <p style = "text-align: center; "> Number of Upvotes
-          </p>
-        </div>
-
-        <div class="col-md-3 " style = "border-style: solid; ">
-
-          <h3>Comment Upvotes</h3>
-          <p style = "text-align: center; "> Number of comment upvotes
-          </p>
-        </div>
-        </div>
-      </div>
-    </div>
-
-
-
-        </div>
-      </div>
-
-    </section>
-    <footer>
-      <p>Footer Text</p>
-    </footer>
-
-
-    <!-- 8. To use bootstrap.min.js, need jquery
+  <!-- 8. To use bootstrap.min.js, need jquery
          https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
          note: js bootstrap allows menu interaction such as dropdown
          (if only use css bootstrap, only link to the css)
     -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js "></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js "></script>
-    <!-- <script src="js/bootstrap.min.js "></script> if you downloaded bootstrap to your computer -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
 
-  </body>
+</body>
+
 </html>
