@@ -7,4 +7,9 @@
   /* Set the fixed height of the footer here */
   height: 60px;
   background-color: #f5f5f5;
+  display: none;
+}
+
+.rowz {
+    margin-bottom: 50px;
 }
