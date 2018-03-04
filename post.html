@@ -130,7 +130,7 @@
         <label for="links">Links</label>
         <textarea class="form-control" id="links" rows="3"></textarea>
       </div>
-      <button type="submit" id="submit" class="btn btn-primary" onclick="addItem">Submit</button>
+      <input type="button" id="record" value="Submit" class="btn btn-primary" onclick="addItem()" />
     </form>
 
 
@@ -154,14 +154,11 @@
   <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
   <script>
     function addItem() {
-      var title = document.getElementById("title").value;
-      var newElement = document.createElement('p');
-      var newText = document.createTextNode(title);
-      newElement.appendChild(newText);
-
-      document.write("<p>" + title + "< /p>");
-      var position = document.getElementById('items');
-      position.appendChild(newElement);
+      var para = document.createElement("p");
+      var node = document.createTextNode("Submitted!");
+      para.appendChild(node);
+      var element = document.getElementById("items");
+      element.appendChild(para);
     }
   </script>
 </body>
