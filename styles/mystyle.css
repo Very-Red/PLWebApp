@@ -13,3 +13,11 @@
 .rowz {
     margin-bottom: 50px;
 }
+
+.marg{margin-top: 50px;
+  margin-bottom: 200px;}
+
+@media(min-width: 992px){
+  .box {min-height: 130px;
+    max-height: 130px;}
+  }
