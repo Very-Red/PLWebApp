@@ -101,20 +101,20 @@
   <section class="container">
     <form>
       <div class="form-group">
-        <label for="titleInput">Title</label>
-        <input type="email" class="form-control" id="titleInput" placeholder="name@example.com">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlFile1">Images</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+        <label for="file">Images</label>
+        <input type="file" class="form-control-file" id="file">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Description</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="desc">Description</label>
+        <textarea class="form-control" id="desc" rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlSelect1">Choose Event</label>
-        <select class="form-control" id="exampleFormControlSelect1">
+        <label for="event">Choose Event</label>
+        <select class="form-control" id="event">
      <option>1</option>
      <option>2</option>
      <option>3</option>
@@ -123,18 +123,19 @@
    </select>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Tags</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="tags">Tags</label>
+        <textarea class="form-control" id="tags" rows="3"></textarea>
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Links</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <label for="links">Links</label>
+        <textarea class="form-control" id="links" rows="3"></textarea>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" id="submit" class="btn btn-primary" onclick="addItem">Submit</button>
     </form>
 
 
   </section>
+  <div id="items"></div>
 
   <footer class="footer">
     <div class="container">
@@ -151,7 +152,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
+  <script>
+    function addItem() {
+      var title = document.getElementById("title").value;
+      var newElement = document.createElement('p');
+      var newText = document.createTextNode(title);
+      newElement.appendChild(newText);
 
+      document.write("<p>" + title + "< /p>");
+      var position = document.getElementById('items');
+      position.appendChild(newElement);
+    }
+  </script>
 </body>
 
 </html>
