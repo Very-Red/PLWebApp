@@ -54,15 +54,7 @@
     } // this is to leave space between navbar and heading
     // when navbar-fixed-top is used
   </style>
-  <script>
-    function validateForm() {
-      var x = document.forms["myForm"]["fname"].value;
-      if (x == "") {
-        alert("Name must be filled out");
-        return false;
-      }
-    }
-  </script>
+
 
   <title>Login</title>
 
@@ -107,7 +99,7 @@
 
 
   <section class="container">
-    <form>
+    <form onsubmit="return validateForm()">
       <div class="form-group">
         <label for="exampleInputEmail1">Email address/Username</label>
         <input type="username" class="form-control" id="xampleInputEmail1" placeholder="Enter email or username">
@@ -121,10 +113,10 @@
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Remember me</label>
       </div>
-      <a href="profile.html" <button type="submit" class="btn btn-primary">Login</button></a>
+      <button type="submit" class="btn btn-primary">Login</button>
     </form>
   </section>
-
+  <!--<a href="profile.html" </a>-->
 
   <footer class="footer">
     <div class="container">
