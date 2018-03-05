@@ -21,3 +21,48 @@
   .box {min-height: 130px;
     max-height: 130px;}
   }
+
+  .center-cropped {
+  width: 100px;
+  height: 100px;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+.square {
+    height: 150px;
+    width: 190px;
+    display: block;
+ margin-left: auto;
+ margin-right: auto;
+ padding-top: 10px;
+}
+.pfp {
+    height: 70px;
+    width: 70px;
+    display: block;
+ margin-left: auto;
+ margin-right: auto;
+}
+.centeredtext{
+  text-align: center;
+  font-size: 15px;
+}
+
+.bordermin{
+  border-style: solid;
+  min-height: 200px;
+  max-height: 200px;
+}
+
+.redtext{
+  color: red;
+}
