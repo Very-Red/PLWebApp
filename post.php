@@ -86,8 +86,8 @@
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
               </form>
             </li>
-            <li><a href="post.html" <button type="submit" class="btn btn-default">Make Post</button></a></li>
-            <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="post.php" <button type="submit" class="btn btn-default">Make Post</button></a></li>
+            <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
 
@@ -96,28 +96,57 @@
     </nav>
   </header>
 
+  <?php
+ // define variables and set to empty values
+ $titleErr = $fileErr = $descErr = "";
+ $title = $file = $desc = "";
+ $allowed =  array('png' ,'jpg');
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   if (empty($_POST["title"])) {
+     $titleErr = "Title is required";
+   } else {
+     $title = test_input($_POST["title"]);
+   }
+   $ext = pathinfo($_POST["file"], PATHINFO_EXTENSION);
+   if(!in_array($ext,$allowed) ) {
+     $fileErr = "Only .png or .jpg files allowed";
+   }
+   if (empty($_POST["file"])) {
+     $fileErr = "Image file is required";
+   }
+   if (empty($_POST["desc"])) {
+     $descErr = "Description is required";
+   } else {
+     $desc = test_input($_POST["title"]);
+   }
+ }
 
+ function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+ }
+ ?>
 
-  <section class="container">
-    <form id="postform">
+  <section class="container" >
+    <form id="postform" action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
       <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" class="form-control" id="title">
-        <span class="redtext" id="title-note"></span>
+        <label for="title">Title</label> <span class="redtext">* <?php echo $titleErr;?></span>
+        <input type="text" class="form-control" id="title" name="title">
+
       </div>
       <div class="form-group">
-        <label for="file">Images</label>
-        <input type="file" class="form-control-file" id="file">
-        <span class="redtext" id="file-note"></span>
+        <label for="file">Images</label> <span class="redtext">* <?php echo $fileErr;?></span>
+        <input type="file" class="form-control-file" id="file" name="file">
       </div>
       <div class="form-group">
-        <label for="desc">Description</label>
-        <textarea class="form-control" id="desc" rows="3"></textarea>
-        <span class="redtext" id="desc-note"></span>
+        <label for="desc">Description</label> <span class="redtext">* <?php echo $descErr;?></span>
+        <textarea class="form-control" id="desc" name="desc" rows="3"></textarea>
       </div>
       <div class="form-group">
         <label for="event">Choose Event</label>
-        <select class="form-control" id="event">
+        <select class="form-control" id="event" name ="event">
      <option>1</option>
      <option>2</option>
      <option>3</option>
@@ -127,13 +156,13 @@
       </div>
       <div class="form-group">
         <label for="tags">Tags</label>
-        <textarea class="form-control" id="tags" rows="3"></textarea>
+        <textarea class="form-control" id="tags" rows="3" name="tags"></textarea>
       </div>
       <div class="form-group">
         <label for="links">Links</label>
-        <textarea class="form-control" id="links" rows="3"></textarea>
+        <textarea class="form-control" id="links" rows="3" name="links"></textarea>
       </div>
-      <input type="button" id="record" value="Submit" class="btn btn-primary" onclick="addItem()" />
+      <input type="submit" id="record" value="Submit" class="btn btn-primary" onclick="addItem()" />
     </form>
 
 
@@ -156,7 +185,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
   <script>
-    function addItem() {
+  /*  function addItem() {
       var x = document.getElementById("title").value;
       var y = document.getElementById("desc").value;
       var z = document.getElementById("file").value;
@@ -187,7 +216,7 @@
         element.appendChild(para);
         document.getElementById("postform").submit();
       }
-    }
+    }*/
   </script>
 </body>
 

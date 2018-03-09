@@ -86,8 +86,8 @@
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
               </form>
             </li>
-            <li><a href="post.html" <button type="submit" class="btn btn-default">Make Post</button></a></li>
-            <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="post.php" <button type="submit" class="btn btn-default">Make Post</button></a></li>
+            <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
 
@@ -96,36 +96,70 @@
     </nav>
   </header>
 
-
+  <?php
+ // define variables and set to empty values
+ $emailErr = $userErr = $passErr = $pass2Err = "";
+ $email = $user = $pass = $pass2 = "";
+ if ($_SERVER["REQUEST_METHOD"] == "POST") {
+   if(empty($_POST["email"])||empty($_POST["user"])||empty($_POST["pass"])||($_POST["pass2"])!=($_POST["pass"])){
+   if (empty($_POST["email"])) {
+     $emailErr = "email is required";
+   } else {
+     $email = test_input($_POST["email"]);
+   }
+   if (empty($_POST["user"])) {
+     $userErr = "username is required";
+   } else {
+     $user = test_input($_POST["user"]);
+   }
+   if (empty($_POST["pass"])) {
+     $passErr = "password is required";
+   } else {
+     $pass = test_input($_POST["pass"]);
+   }
+   if (($_POST["pass2"])!=($_POST["pass"])) {
+     $pass2Err = "Does not match password";
+   }
+  }
+  else{
+    echo "Signup complete!";
+  }
+ }
+//make inputs valid and prevent html coding
+ function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+ }
+ ?>
 
   <section class="container">
-    <form>
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post">
       <div class="form-group">
-        <label for="inputEmail">Email address</label>
-        <input type="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
+        <label for="inputEmail">Email address</label> <span class="redtext">* <?php echo $emailErr;?></span>
+        <input type="email" class="form-control" id="inputEmail" name="email" aria-describedby="emailHelp" placeholder="Enter email" value="<?php echo $email;?>">
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        <span class="redtext" id="email-mess"></span>
       </div>
       <div class="form-group">
-        <label for="inputUsername">Username</label>
-        <input type="username" class="form-control" id="inputUsername" placeholder="Enter username">
-        <span class="redtext" id="user-mess"></span>
+        <label for="inputUsername">Username</label> <span class="redtext">* <?php echo $userErr;?></span>
+        <input type="username" class="form-control" id="inputUsername" name="user" placeholder="Enter username" value="<?php echo $user;?>">
       </div>
       <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-        <span class="redtext" id="pass-mess"></span>
+        <label for="inputPassword">Password</label> <span class="redtext">* <?php echo $passErr;?></span>
+        <input type="password" class="form-control" id="inputPassword" name="pass" placeholder="Password" value="<?php echo $pass;?>">
+
       </div>
       <div class="form-group">
-        <label for="reInputPassword">Confirm Password</label>
-        <input type="password" class="form-control" id="reInputPassword" placeholder="Password">
-        <span class="redtext" id="pass2-mess"></span>
+        <label for="reInputPassword">Confirm Password</label> <span class="redtext">* <?php echo $pass2Err;?></span>
+        <input type="password" class="form-control" id="reInputPassword" name="pass2" placeholder="Password">
+
       </div>
       <div class="form-check">
         <input type="checkbox" class="form-check-input" id="remember">
         <label class="form-check-label" for="remember">Remember me</label>
       </div>
-      <button type="button" class="btn btn-primary" onclick="ValidateSignup()">Sign Up</button>
+      <button type="submit" class="btn btn-primary" onclick="ValidateSignup()">Sign Up</button>
     </form>
   </section>
   <div id="items"></div>
@@ -145,7 +179,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
   <script>
-    function ValidateSignup() {
+    /*function ValidateSignup() {
       var a = document.getElementById("inputUsername").value;
       var b = document.getElementById("inputEmail").value;
       var c = document.getElementById("inputPassword").value;
@@ -185,7 +219,7 @@
         element.appendChild(para);
       }
 
-    }
+    }*/
   </script>
 </body>
 
