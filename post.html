@@ -97,6 +97,49 @@
   </header>
 
 
+
+  <section class="container">
+    <form id="postform">
+      <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title">
+        <span class="redtext" id="title-note"></span>
+      </div>
+      <div class="form-group">
+        <label for="file">Images</label>
+        <input type="file" class="form-control-file" id="file">
+        <span class="redtext" id="file-note"></span>
+      </div>
+      <div class="form-group">
+        <label for="desc">Description</label>
+        <textarea class="form-control" id="desc" rows="3"></textarea>
+        <span class="redtext" id="desc-note"></span>
+      </div>
+      <div class="form-group">
+        <label for="event">Choose Event</label>
+        <select class="form-control" id="event">
+     <option>1</option>
+     <option>2</option>
+     <option>3</option>
+     <option>4</option>
+     <option>5</option>
+   </select>
+      </div>
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <textarea class="form-control" id="tags" rows="3"></textarea>
+      </div>
+      <div class="form-group">
+        <label for="links">Links</label>
+        <textarea class="form-control" id="links" rows="3"></textarea>
+      </div>
+      <input type="button" id="record" value="Submit" class="btn btn-primary" onclick="addItem()" />
+    </form>
+
+
+  </section>
+  <div id="items"></div>
+
   <footer class="footer">
     <div class="container">
       <p class="text-muted">Place footer content here.</p>
@@ -112,7 +155,40 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
-
+  <script>
+    function addItem() {
+      var x = document.getElementById("title").value;
+      var y = document.getElementById("desc").value;
+      var z = document.getElementById("file").value;
+      if (x == '' || y == '' || z == '') {
+        if (x == '') {
+          document.getElementById("title-note").innerHTML = "Please enter title";
+        } else {
+          document.getElementById("title-note").innerHTML = "";
+        }
+        if (y == '') {
+          document.getElementById("desc-note").innerHTML = "Please enter description";
+        } else {
+          document.getElementById("desc-note").innerHTML = "";
+        }
+        if (z == '') {
+          document.getElementById("file-note").innerHTML = "Please upload image";
+        } else {
+          document.getElementById("file-note").innerHTML = "";
+        }
+      } else {
+        document.getElementById("title-note").innerHTML = "";
+        document.getElementById("desc-note").innerHTML = "";
+        document.getElementById("file-note").innerHTML = "";
+        var para = document.createElement("p");
+        var node = document.createTextNode("Submitted!");
+        para.appendChild(node);
+        var element = document.getElementById("items");
+        element.appendChild(para);
+        document.getElementById("postform").submit();
+      }
+    }
+  </script>
 </body>
 
 </html>

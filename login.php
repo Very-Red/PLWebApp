@@ -61,6 +61,7 @@
 </head>
 
 <body>
+
   <header>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
@@ -87,9 +88,9 @@
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
               </form>
             </li>
-            <li><a href="post.html" <button type="submit" class="btn btn-default">Make Post</button></a></li>
-            <li><a href="signup.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="post.php" <button type="submit" class="btn btn-default">Make Post</button></a></li>
+            <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+            <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
 
         </div>
@@ -98,24 +99,54 @@
   </header>
 
 
+  <?php
+  // define variables and set to empty values
+  $emailErr = $passwordErr = "";
+  $email = $password = "";
+
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if (empty($_POST["inputEmail"])) {
+      $emailErr = "Email is required";
+    } else {
+      $email = test_input($_POST["inputEmail"]);
+    }
+
+    if (empty($_POST["inputPassword"])) {
+      $passwordErr = "Password is required";
+    } else {
+      $password = test_input($_POST["inputPassword"]);
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $emailErr = "Invalid email format";
+    }
+  }
+
+  function test_input($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+  }
+  ?>
   <section class="container">
-    <form onsubmit="return validateForm()">
+    <form action="<?php $_SERVER['PHP_SELF'] ?>" method="post" >
       <div class="form-group">
-        <label for="inputEmail">Email address/Username</label>
-        <input type="username" class="form-control" id="inputEmail" placeholder="Enter email or username">
-        <span class="redtext" id="email-note"></span>
+        <label for="inputEmail">Email address</label>
+        <input type="username" class="form-control" name="inputEmail" id="inputEmail" placeholder="Enter email">
+        <span class="redtext" id="email-note"><?php echo $emailErr;?></span>
       </div>
       <div class="form-group">
         <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
-        <span class="redtext" id="password-note"></span>
+        <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Password">
+        <span class="redtext" id="password-note"><?php echo $passwordErr;?></span>
       </div>
-      <div class="form-check">
+      <!--<div class="form-check">
         <input type="checkbox" class="form-check-input" id="remember">
         <label class="form-check-label" for="remember">Remember me</label>
-      </div>
+      </div>-->
 
-      <button type="button" class="btn btn-primary" onclick="validatePassword()">Login</button>
+      <button type="submit" class="btn btn-primary" >Login</button>
 
     </form>
   </section>
@@ -137,7 +168,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
 
-  <script>
+  <!--<script>
     function validatePassword() {
       if (document.getElementById("inputPassword").value == '' || document.getElementById("inputEmail").value == '') {
         if (document.getElementById("inputPassword").value == '') {
@@ -156,7 +187,7 @@
         window.location = "profile.html";
       }
     }
-  </script>
+  </script>-->
 </body>
 
 </html>

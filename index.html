@@ -88,7 +88,7 @@
             </li>
             <li><a href="post.php" <button type="submit" class="btn btn-default">Make Post</button></a></li>
             <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
 
         </div>
