@@ -114,6 +114,8 @@
    }
    if (empty($_POST["pass"])) {
      $passErr = "password is required";
+   } else if(pass_length($_POST["pass"])){
+     $passErr = "password must be atleast 8 characters";
    } else {
      $pass = test_input($_POST["pass"]);
    }
@@ -131,6 +133,13 @@
    $data = stripslashes($data);
    $data = htmlspecialchars($data);
    return $data;
+ }
+
+ function pass_length($data){
+   if(strlen($data) < 8){
+     return true;
+   }
+   return false;
  }
  ?>
 
@@ -155,10 +164,10 @@
         <input type="password" class="form-control" id="reInputPassword" name="pass2" placeholder="Password">
 
       </div>
-      <div class="form-check">
+      <!--<div class="form-check">
         <input type="checkbox" class="form-check-input" id="remember">
         <label class="form-check-label" for="remember">Remember me</label>
-      </div>
+      </div>-->
       <button type="submit" class="btn btn-primary" onclick="ValidateSignup()">Sign Up</button>
     </form>
   </section>
