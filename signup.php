@@ -105,19 +105,19 @@
    if (empty($_POST["email"])) {
      $emailErr = "email is required";
    } else {
-     $email = test_input($_POST["email"]);
+     $email = checker($_POST["email"]);
    }
    if (empty($_POST["user"])) {
      $userErr = "username is required";
    } else {
-     $user = test_input($_POST["user"]);
+     $user = checker($_POST["user"]);
    }
    if (empty($_POST["pass"])) {
      $passErr = "password is required";
    } else if(pass_length($_POST["pass"])){
      $passErr = "password must be atleast 8 characters";
    } else {
-     $pass = test_input($_POST["pass"]);
+     $pass = checker($_POST["pass"]);
    }
    if (($_POST["pass2"])!=($_POST["pass"])) {
      $pass2Err = "Does not match password";
@@ -128,7 +128,7 @@
   }
  }
 //make inputs valid and prevent html coding
- function test_input($data) {
+ function checker($data) {
    $data = trim($data);
    $data = stripslashes($data);
    $data = htmlspecialchars($data);

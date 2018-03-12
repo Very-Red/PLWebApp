@@ -108,13 +108,13 @@
     if (empty($_POST["inputEmail"])) {
       $emailErr = "Email is required";
     } else {
-      $email = test_input($_POST["inputEmail"]);
+      $email = checker($_POST["inputEmail"]);
     }
 
     if (empty($_POST["inputPassword"])) {
       $passwordErr = "Password is required";
     } else {
-      $password = test_input($_POST["inputPassword"]);
+      $password = checker($_POST["inputPassword"]);
     }
 
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -122,7 +122,7 @@
     }
   }
 
-  function test_input($data) {
+  function checker($data) {
     $data = trim($data);
     $data = stripslashes($data);
     $data = htmlspecialchars($data);

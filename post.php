@@ -105,7 +105,7 @@
    if (empty($_POST["title"])) {
      $titleErr = "Title is required";
    } else {
-     $title = test_input($_POST["title"]);
+     $title = checker($_POST["title"]);
    }
    $ext = pathinfo($_POST["file"], PATHINFO_EXTENSION);
    if(!in_array($ext,$allowed) ) {
@@ -117,11 +117,11 @@
    if (empty($_POST["desc"])) {
      $descErr = "Description is required";
    } else {
-     $desc = test_input($_POST["title"]);
+     $desc = checker($_POST["title"]);
    }
  }
 
- function test_input($data) {
+ function checker($data) {
    $data = trim($data);
    $data = stripslashes($data);
    $data = htmlspecialchars($data);
