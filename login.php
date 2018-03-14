@@ -105,20 +105,29 @@
   $email = $password = "";
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if(empty($_POST["inputEmail"])||empty($_POST["inputPassword"])||!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)){
+    if(!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)||empty($_POST["inputEmail"])){
+      if (!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)) {
+        //check that email has @ and .com
+      $emailErr = "Invalid email format";
+      }
     if (empty($_POST["inputEmail"])) {
       $emailErr = "Email is required";
-    } else {
-      $email = checker($_POST["inputEmail"]);
     }
 
+  }
     if (empty($_POST["inputPassword"])) {
       $passwordErr = "Password is required";
-    } else {
-      $password = checker($_POST["inputPassword"]);
     }
+  }
+    else {
+      //set php values to user input and create a cookie for email
+      $email = checker($_POST["inputEmail"]);
+      $password = checker($_POST["inputPassword"]);
+      setcookie('user',"$email",time()+3600);
+      //redirect to profile page
+      header('Location: profile.php');
 
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $emailErr = "Invalid email format";
     }
   }
 

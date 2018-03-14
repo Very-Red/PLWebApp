@@ -119,6 +119,7 @@
    } else {
      $pass = checker($_POST["pass"]);
    }
+   //check if password and re-entered password match
    if (($_POST["pass2"])!=($_POST["pass"])) {
      $pass2Err = "Does not match password";
    }
@@ -134,7 +135,7 @@
    $data = htmlspecialchars($data);
    return $data;
  }
-
+// make sure password is atleast 8 characters
  function pass_length($data){
    if(strlen($data) < 8){
      return true;

@@ -96,7 +96,14 @@ https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js (js, link at
   </header>
 
 
-
+  <?php
+  //retrieve user cookie
+  $user = "name";
+  if (isset($_COOKIE['user']))
+  {
+     $user = trim($_COOKIE['user']);
+  }
+  ?>
 
 
   <section class="highlight">
@@ -109,7 +116,7 @@ https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js (js, link at
               <div class="pfp">
                 <img src="https://vignette.wikia.nocookie.net/animal-jam-clans-1/images/b/b3/Kawaii_bunny.jpg/revision/latest?cb=20160424023659" alt="image1">
               </div>
-              <h3 style="text-align: center; font-size: 15px; ">Username</h3>
+              <h3 id = "namebox" style="text-align: center; font-size: 15px; "></h3>
             </div>
 
             <div class="col-md-3 box " style="border-style: solid; ">
@@ -181,7 +188,10 @@ https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js (js, link at
     </div>
   </footer>
 
-
+  <script>
+  //set username value to email of user
+  document.getElementById("namebox").innerHTML = "<?php echo $user;?>";
+  </script>
   <!-- 8. To use bootstrap.min.js, need jquery
   https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js
   note: js bootstrap allows menu interaction such as dropdown
