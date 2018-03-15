@@ -100,6 +100,8 @@
  // define variables and set to empty values
  $emailErr = $userErr = $passErr = $pass2Err = "";
  $email = $user = $pass = $pass2 = "";
+
+ //checks everything filled in
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if(empty($_POST["email"])||empty($_POST["user"])||empty($_POST["pass"])||($_POST["pass2"])!=($_POST["pass"])){
    if (empty($_POST["email"])) {

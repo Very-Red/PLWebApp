@@ -101,6 +101,8 @@
  $titleErr = $fileErr = $descErr = "";
  $title = $file = $desc = "";
  $allowed =  array('png' ,'jpg');
+
+ //checks filled in
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if (empty($_POST["title"])) {
      $titleErr = "Title is required";

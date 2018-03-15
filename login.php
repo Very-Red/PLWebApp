@@ -111,11 +111,13 @@
         //check that email has @ and .com
       $emailErr = "Invalid email format";
       }
+      //checks input entered for email
     if (empty($_POST["inputEmail"])) {
       $emailErr = "Email is required";
     }
 
   }
+    //checks input entered for password
     if (empty($_POST["inputPassword"])) {
       $passwordErr = "Password is required";
     }
