@@ -106,22 +106,22 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(empty($_POST["inputEmail"])||empty($_POST["inputPassword"])||!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)){
-    if(!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)||empty($_POST["inputEmail"])){
-      if (!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)) {
-        //check that email has @ and .com
-      $emailErr = "Invalid email format";
-      }
-      //checks input entered for email
-    if (empty($_POST["inputEmail"])) {
-      $emailErr = "Email is required";
-    }
+      if(!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)||empty($_POST["inputEmail"])){
+        if (!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)) {
+          //check that email has @ and .com
+          $emailErr = "Invalid email format";
+        }
+        //checks input entered for email
+        if (empty($_POST["inputEmail"])) {
+          $emailErr = "Email is required";
+        }
 
-  }
-    //checks input entered for password
-    if (empty($_POST["inputPassword"])) {
-      $passwordErr = "Password is required";
+      }
+      //checks input entered for password
+      if (empty($_POST["inputPassword"])) {
+        $passwordErr = "Password is required";
+      }
     }
-  }
     else {
       //set php values to user input and create a cookie for email
       $email = checker($_POST["inputEmail"]);

@@ -104,24 +104,24 @@
  //checks everything filled in
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
    if(empty($_POST["email"])||empty($_POST["user"])||empty($_POST["pass"])||($_POST["pass2"])!=($_POST["pass"])){
-   if (empty($_POST["email"])) {
-     $emailErr = "email is required";
-   } else {
-     $email = checker($_POST["email"]);
-   }
-   if (empty($_POST["user"])) {
-     $userErr = "username is required";
-   } else {
-     $user = checker($_POST["user"]);
-   }
-   if (empty($_POST["pass"])) {
-     $passErr = "password is required";
-   } else if(pass_length($_POST["pass"])){
-     $passErr = "password must be atleast 8 characters";
-   } else {
-     $pass = checker($_POST["pass"]);
-   }
-   //check if password and re-entered password match
+     if (empty($_POST["email"])) {
+       $emailErr = "email is required";
+     } else {
+       $email = checker($_POST["email"]);
+     }
+     if (empty($_POST["user"])) {
+       $userErr = "username is required";
+     } else {
+       $user = checker($_POST["user"]);
+     }
+     if (empty($_POST["pass"])) {
+       $passErr = "password is required";
+     } else if(pass_length($_POST["pass"])){
+       $passErr = "password must be atleast 8 characters";
+     } else {
+       $pass = checker($_POST["pass"]);
+     }
+     //check if password and re-entered password match
    if (($_POST["pass2"])!=($_POST["pass"])) {
      $pass2Err = "Does not match password";
    }
