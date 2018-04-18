@@ -2,8 +2,9 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+ <%@ page contentType = "text/html" %>
 <head>
+
   <meta charset="utf-8">
 
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -55,24 +56,35 @@
     // when navbar-fixed-top is used
   </style>
 
-
-  <title>Login</title>
+  <title>Home</title>
 
 </head>
 
 <body>
-
+<%! String user; //Declaration %>
   <header>
     <nav class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-    </button>
-                    <a class="navbar-brand" href="index.jsp">Website Name </a>
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+			</button>
+          <a class="navbar-brand" href="index.html">Website Name </a>
+          <% if(session.getAttribute("user") == null){
+        	  user = ""; //Scriptlet
+          }else{
+        	  user = (String)session.getAttribute("user");
+          }
+        	  %>
+        	 <jsp:useBean id="current" class="mail.User" scope="session">
+  </jsp:useBean>
+  <jsp:setProperty name="current" property="username" value='<%= session.getAttribute("user") %>' />
+  <jsp:setProperty name="current" property="password" value='<%= session.getAttribute("password") %>' />
+ 
+          <a class="navbar-brand" href="faq.jsp" >User: <%=user%> </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
@@ -88,9 +100,9 @@
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
               </form>
             </li>
-            <li><a href="post.php" <button type="submit" class="btn btn-default">Make Post</button></a></li>
+            <li><a href="post.php"><button type="submit" class="btn btn-default">Make Post</button></a></li>
             <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-            <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+            <li><a href="login.php"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
 
         </div>
@@ -98,68 +110,55 @@
     </nav>
   </header>
 
+  <div class="container">
+    <div class="row rowz">
+      <nav class="col-md-2 sidenav">
 
- <!-- <?php
-  // define variables and set to empty values
-  $emailErr = $passwordErr = "";
-  $email = $password = "";
+        <h4>Filters</h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Hot</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">New</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Top</a>
+          </li>
+        </ul><br>
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    if(empty($_POST["inputEmail"])||empty($_POST["inputPassword"])||!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)){
-    if(!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)||empty($_POST["inputEmail"])){
-      if (!filter_var($_POST["inputEmail"], FILTER_VALIDATE_EMAIL)) {
-        //check that email has @ and .com
-      $emailErr = "Invalid email format";
-      }
-    if (empty($_POST["inputEmail"])) {
-      $emailErr = "Email is required";
-    }
+        <h4>Categories</h4>
+        <ul class="nav nav-pills nav-stacked">
+          <li class="checkbox">
+            <label><input type="checkbox" value="">Professional</label>
+          </li>
+          <li class="checkbox">
+            <label><input type="checkbox" value="">Casual</label>
+          </li>
+          <li class="checkbox">
+            <label><input type="checkbox" value="">Romantic</label>
+          </li>
+        </ul><br>
+      </nav>
 
-  }
-    if (empty($_POST["inputPassword"])) {
-      $passwordErr = "Password is required";
-    }
-  }
-    else {
-      //set php values to user input and create a cookie for email
-      $email = checker($_POST["inputEmail"]);
-      $password = checker($_POST["inputPassword"]);
-      setcookie('user',"$email",time()+3600);
-      //redirect to profile page
-      header('Location: profile.php');
 
-    }
-  }
 
-  function checker($data) {
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-  }
-  ?> -->
-  <section class="container">
-    <form action="loginscreen" method="post" >
-      <div class="form-group">
-        <label for="inputEmail">Username</label>
-        <input type="username" class="form-control" name="inputEmail" id="inputEmail" placeholder="Enter username">
-       <!--  <span class="redtext" id="email-note"><?php echo $emailErr;?></span>  -->
+
+      <div class="col-md-10">
+        <div id="todo">
+          <table id="todoTable" class="table">
+            <thead>
+
+            </thead>
+
+            <!-- JS will dynamically create add new row upon form submission -->
+
+          </table>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="inputPassword">Password</label>
-        <input type="password" class="form-control" name="inputPassword" id="inputPassword" placeholder="Password">
-        <!--  <span class="redtext" id="password-note"><?php echo $passwordErr;?></span> -->
-      </div>
-      <!--<div class="form-check">
-        <input type="checkbox" class="form-check-input" id="remember">
-        <label class="form-check-label" for="remember">Remember me</label>
-      </div>-->
-
-      <button type="submit" class="btn btn-primary" >Login</button>
-
-    </form>
-  </section>
-  <!--<a href="profile.html" </a>-->
+    </div>
+  </div>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -177,26 +176,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <!-- <script src="js/bootstrap.min.js"></script> if you downloaded bootstrap to your computer -->
 
-  <!--<script>
-    function validatePassword() {
-      if (document.getElementById("inputPassword").value == '' || document.getElementById("inputEmail").value == '') {
-        if (document.getElementById("inputPassword").value == '') {
-          // if user needs to fix this element, put cursor to it (reduce excise task)
-          // and tell user how to fix it
-          document.getElementById("inputPassword").focus();
-          document.getElementById("password-note").innerHTML = "Please enter password";
-        }
-        if (document.getElementById("inputEmail").value == '') {
-          // if user needs to fix this element, put cursor to it (reduce excise task)
-          // and tell user how to fix it
-          document.getElementById("inputEmail").focus();
-          document.getElementById("email-note").innerHTML = "Please enter email";
-        }
-      } else {
-        window.location = "profile.html";
-      }
-    }
-  </script>-->
 </body>
 
 </html>

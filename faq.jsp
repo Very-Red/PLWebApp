@@ -2,7 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
+ <%@ page contentType = "text/html" %>
 <head>
   <meta charset="utf-8">
 
@@ -86,7 +86,7 @@
                 <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
               </form>
             </li>
-            <li><a href="post.php" <button type="submit" class="btn btn-default">Make Post</button></a></li>
+            <li><a href="post.php"> <button type="submit" class="btn btn-default">Make Post</button></a></li>
             <li><a href="signup.php"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
             <li><a href="login.jsp"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
           </ul>
@@ -95,13 +95,17 @@
       </div>
     </nav>
   </header>
+<body>
+  <jsp:useBean id="current" class="mail.User" scope="session">
+  </jsp:useBean>
+ 
+ 
+ <p>Username: </p><jsp:getProperty name = "current" property = "username"/>
+  <p>Password: </p><jsp:getProperty name = "current" property = "password"/>
 
+</body>
 
-  <footer class="footer">
-    <div class="container">
-      <p class="text-muted">Place footer content here.</p>
-    </div>
-  </footer>
+ 
 
 
   <!-- 8. To use bootstrap.min.js, need jquery
